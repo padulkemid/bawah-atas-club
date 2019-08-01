@@ -1,0 +1,399 @@
+/* 
+	CSS buat oleh Fadhil Muhammad 
+	tanpa paksaan dan doa orang tua :D
+*/
+
+/*	INDEX
+	CSS DIMULAI DARI SINI
+*/
+
+body {
+	font-family: "Lato", sans-serif;
+}
+
+/********* Content *********/
+
+/* Atas */
+
+.jumbotron {
+	margin-bottom: 0px;
+	height: 200px; /* samain sama class parallax */
+	color: #fff;
+	background: transparent;
+}
+.parallax {
+	background-image: url("../img/bg.png");
+	height: 200px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#top-jumbotron h1 {
+	font-family: "Indie Flower", cursive;
+	margin: auto;
+	margin-top: -10px;
+	font-size: 72px;
+}
+#top-jumbotron h2 {
+	font-family: "Indie Flower", cursive;
+	margin: auto;
+	font-size: 48px;
+}
+
+/* Tengah */
+
+#triple-features .row {
+	margin: auto;
+	padding: 10px 0 15px 0;
+	border-bottom-style: solid;
+	border-color: #37abc8;
+	border-bottom-width: 1px;
+}
+#triple-features h4 {
+	font-size: 21px;
+	color: #000;
+}
+#triple-features p {
+	text-align: center;
+}
+#triple-features .btn {
+	color: #fff;
+	background-color: #37abc8;
+	border-color: #fff;
+	width: 200px;
+	margin: 20px auto;
+	padding: 8px;
+	display: block;
+}
+#triple-features .btn:hover,
+#triple-features .btn:focus {
+	background-color: #288ea8;
+}
+#detail-features .row {
+	margin: auto;
+	padding: 10px 0 15px 0;
+	border-bottom-style: solid;
+	border-color: #37abc8;
+	border-bottom-width: 1px;
+}
+#detail-features .row .col-sm-5 img {
+	border-radius: 25px;
+}
+
+/* Bawah */
+
+#bot-jumbotron {
+	height: 225px;
+}
+#bot-jumbotron h1 {
+	font-family: "Indie Flower", cursive;
+	margin: auto;
+	margin-top: 32px;
+	font-size: 72px;
+}
+#artikel {
+	padding: 25px;
+}
+#artikel h4 {
+	color: #000;
+}
+
+/* Footer Properties */
+
+.footer {
+	background-color: #ecf0f1;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-color: #37abc8;
+}
+.footer .copyright {
+	text-align: center;
+	color: #2c3e50;
+	padding: 10px 0 2px 0;
+	background-color: #bdc3c7;
+}
+.footer .row .col-sm-5 > img {
+	margin: auto;
+	padding: 10px 0 10px 0;
+	border-bottom-style: dashed;
+	border-width: 3px;
+	border-color: #37abc8;
+}
+.footer .row .col-sm-5 .social {
+	margin: auto;
+	padding: 10px 0 10px 0;
+}
+.footer .row .col-sm-5 .social .ig {
+	color: #37abc8;
+}
+.footer .row .col-sm-5 .social .ig:hover,
+.footer .row .col-sm-5 .social .ig:focus {
+	color: #288ea8;
+}
+.footer .row .col-sm-5 .social .twitter {
+	color: #37abc8;
+}
+.footer .row .col-sm-5 .social .twitter:hover,
+.footer .row .col-sm-5 .social .twitter:focus {
+	color: #288ea8;
+}
+.footer .row .col-sm-5 .social .fb {
+	color: #37abc8;
+}
+.footer .row .col-sm-5 .social .fb:hover,
+.footer .row .col-sm-5 .social .fb:focus {
+	color: #288ea8;
+}
+.footer .row .col-sm-7 > h4 {
+	padding-top: 15px;
+	color: #2c3e50;
+	font-weight: 550;
+}
+.footer .btn {
+	color: #fff;
+	background-color: #37abc8;
+	border-style: none;
+	display: block;
+	width: 150px;
+	margin: 15px auto;
+	padding: 8px;
+}
+.footer .btn:hover,
+.footer .btn:focus {
+	background-color: #288ea8;
+}
+.footer .row .col-sm-7 a {
+	text-decoration: none;
+}
+
+/* 	FORM
+	CSS DIMULAI DARI SINI
+*/
+
+#tengah {
+	top: 50px;
+	left: 20px;
+	width: 400px;
+	min-height: 700px;
+}
+#tengah h1 {
+	font-family: "Indie Flower", cursive;
+	font-size: 72px;
+	color: #37abc8;
+	margin-bottom: 35px;
+}
+#tengah .input-group {
+	margin-bottom: 15px;
+}
+#tengah .input-group-addon {
+	background-color: #fff;
+}
+#tengah .fa {
+	color: #37abc8;
+}
+#tengah .btn {
+	color: #fff;
+	background-color: #37abc8;
+	border-color: #fff;
+	width: 100px;
+	margin: 15px auto;
+	padding: 8px;
+}
+#tengah .btn:hover,
+#tengah .btn:focus {
+	background-color: #288ea8;
+}
+
+/* 	MONITORING
+	CSS DIMULAI DARI SINI
+*/
+
+#monitoring {
+	margin: 150px 0 100px 40px;
+}
+#monitoring h1 {
+	font-family: "Indie Flower", cursive;
+	font-size: 72px;
+	color: #37abc8;
+	margin-bottom: 35px;
+}
+#monitoring #box-kondisi {
+	border-style: solid;
+	border-width: 5px;
+	border-color: #37abc8;
+	width: 100%;
+	height: 400px;
+	padding: 120px 50px 50px 50px;
+}
+#monitoring #data-user {
+	border-style: solid;
+	border-width: 5px;
+	border-color: #37abc8;
+	width: 100%;
+	height: 380px;
+	padding: 120px 50px 50px 50px;
+	margin: 20px 0 0 0;
+}
+#monitoring h2,
+h4 {
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#monitoring #peta {
+	width: 100%;
+	height: 400px;
+}
+#monitoring #chart {
+	padding: 20px 0;
+	width: 100%;
+	height: 420px;
+}
+#monitoring .btn {
+	color: #fff;
+	background-color: #37abc8;
+	border-color: #fff;
+	width: 200px;
+	margin: 20px auto;
+	padding: 8px;
+	display: block;
+}
+#monitoring .btn:hover,
+#monitoring .btn:focus {
+	background-color: #288ea8;
+}
+#button-logout {
+	display: none;
+}
+
+/* 	ABOUT
+	CSS DIMULAI DARI SINI
+*/
+
+#info-alat img {
+	border-radius: 20px;
+}
+#team-kita {
+	color: #2c3e50;
+}
+
+#team-kita .team-banner {
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-color: #37abc8;
+	border-width: 1px;
+	padding: 7px;
+}
+#team-kita .row .col-sm-3 {
+	margin: auto;
+	margin-top: 10px;
+	padding: 5px;
+}
+
+/*	ADMIN 
+	CSS DIMULAI DARI SINI
+*/
+
+#form-admin {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#daftar-alat {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 500px;
+}
+#edit-berita {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 100px;
+}
+#admin {
+	top: 50px;
+	left: 20px;
+	width: 400px;
+	min-height: 700px;
+}
+#admin h1 {
+	font-family: "Indie Flower", cursive;
+	font-size: 72px;
+	color: #37abc8;
+	margin-bottom: 35px;
+	display: inline;
+}
+#admin img {
+	margin: 0 0 20px 20px;
+}
+#admin .input-group {
+	margin-bottom: 15px;
+}
+#admin .input-group-addon {
+	background-color: #fff;
+}
+#admin #form-berita {
+	height: 300px;
+}
+#admin .fa {
+	color: #37abc8;
+}
+
+#admin .btn {
+	color: #fff;
+	background-color: #37abc8;
+	border-color: #fff;
+	width: 371px;
+	padding: 8px;
+	display: block;
+}
+#admin .btn:hover,
+#admin .btn:focus {
+	background-color: #288ea8;
+}
+
+.navigasi-admin {
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	z-index: 1; /* layer paling depan */
+	top: 0;
+	left: 0;
+	background-color: #37abc8;
+	overflow-x: hidden;
+	padding: 20px 0 0 0;
+}
+.navigasi-admin a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 30px;
+	color: #fff;
+	display: block;
+}
+.navigasi-admin a:hover,
+.navigasi-admin a:focus {
+	background-color: #288ea8;
+}
+.konten-admin {
+	margin: 0 0 0 200px;
+	padding: 50px 20px;
+}
+#logout-admin {
+	display: none;
+	color: #fff;
+	background-color: #37abc8;
+	border-color: #fff;
+	width: 150px;
+	margin: 700px 8px 6px 16px;
+	padding: 8px;
+}
+#logout-admin:hover,
+#logout-admin:focus {
+	background-color: #288ea8;
+}
+#admin-menu {
+	display: none;
+}
