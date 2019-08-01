@@ -100,7 +100,7 @@ export default class App extends Component {
           markerTukimin: snapshot.val().markerTukimin
         });
         if (this.state.markerSelector === 1) {
-          this.setState(prevState => ({
+          this.setState({
             propsPaijo: {
               slider: false,
               distance: false
@@ -115,7 +115,7 @@ export default class App extends Component {
             }
           }));
         } else if (this.state.markerSelector === 2) {
-          this.setState(prevState => ({
+          this.setState({
             propsAndi: {
               slider: false,
               distance: false
@@ -130,7 +130,7 @@ export default class App extends Component {
             }
           }));
         } else if (this.state.markerSelector === 3) {
-          this.setState(prevState => ({
+          this.setState({
             propsAndi: {
               slider: false,
               distance: false
@@ -145,7 +145,7 @@ export default class App extends Component {
             }
           }));
         } else if (this.state.markerSelector === 4) {
-          this.setState(prevState => ({
+          this.setState({
             propsTukimin: {
               slider: false,
               distance: false
