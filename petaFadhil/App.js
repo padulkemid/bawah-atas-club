@@ -255,7 +255,7 @@ export default class App extends Component {
       fcmToken = await firebase.messaging().getToken();
       if (fcmToken) {
         await AsyncStorage.setItem("fcmToken", fcmToken);
-        console.log(fcmToken);
+        console.log("token anda yang mulia :", fcmToken);
         firebase
           .database()
           .ref("/maps")
@@ -263,6 +263,14 @@ export default class App extends Component {
             fcmToken: fcmToken
           });
       }
+    } else {
+      console.log("token old maneh:", fcmToken);
+      firebase
+        .database()
+        .ref("/maps")
+        .update({
+          fcmToken: fcmToken
+        });
     }
   }
 
