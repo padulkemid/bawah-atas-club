@@ -64,9 +64,9 @@ export default class App extends Component {
         slider: false,
         distance: false
       },
-      markerTest:{
+      markerTest: {
         latitude: -6.97286,
-        longitude: 107.632612,
+        longitude: 107.632612
       },
       markerTestProps: {
         slider: false,
@@ -83,6 +83,10 @@ export default class App extends Component {
       safezoneRadiusTesting: 50,
       distanceTesting: 0
     };
+  }
+
+  componentWillUnmount() {
+    this.requestGeolocation();
   }
 
   componentDidMount() {
@@ -113,7 +117,7 @@ export default class App extends Component {
               slider: false,
               distance: false
             }
-          }));
+          });
         } else if (this.state.markerSelector === 2) {
           this.setState({
             propsAndi: {
@@ -128,7 +132,7 @@ export default class App extends Component {
               slider: false,
               distance: false
             }
-          }));
+          });
         } else if (this.state.markerSelector === 3) {
           this.setState({
             propsAndi: {
@@ -143,7 +147,7 @@ export default class App extends Component {
               slider: false,
               distance: false
             }
-          }));
+          });
         } else if (this.state.markerSelector === 4) {
           this.setState({
             propsTukimin: {
@@ -158,7 +162,7 @@ export default class App extends Component {
               slider: false,
               distance: false
             }
-          }));
+          });
         }
       });
 
@@ -181,7 +185,6 @@ export default class App extends Component {
 
     this.watchID = navigator.geolocation.watchPosition(
       position => {
-
         this.setState({
           markerTest: {
             latitude: position.coords.latitude,
@@ -198,12 +201,12 @@ export default class App extends Component {
           });
       },
       error => console.log(error),
-      { enableHighAccuracy: true }
+      { enableHighAccuracy: true, distanceFilter: 0, maximumAge: 0 }
     );
   }
 
   componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID)
+    navigator.geolocation.clearWatch(this.watchID);
   }
 
   async requestGeolocation() {
@@ -419,6 +422,16 @@ export default class App extends Component {
     }
   };
 
+  submitCoordsDistance(dist) {
+    firebase
+      .database()
+      .ref("/maps/Testing")
+      .update({
+        latDistanceStart: dist.nativeEvent.coordinate.latitude,
+        lngDistanceStart: dist.nativeEvent.coordinate.longitude
+      });
+  }
+
   submitSafezoneRadius = () => {
     let set = radius => {
       firebase
@@ -439,6 +452,8 @@ export default class App extends Component {
         markerSelector: 4
       });
   };
+
+
 
   render() {
     return (
@@ -483,7 +498,7 @@ export default class App extends Component {
 
         <MapView
           initialRegion={this.state.region}
-          showsUserLocation={true}
+          showsUserLocation={false}
           followUserLocation={true}
           showsMyLocationButton={true}
           rotateEnabled={false}
@@ -495,8 +510,21 @@ export default class App extends Component {
           {this.state.markerAndi ? <Andi /> : null}
           {this.state.markerPaijo ? <Paijo /> : null}
           {this.state.markerTukimin ? <Tukimin /> : null}
-
-          <Marker.Animated
+          <Polyline
+            coordinates={[
+              {
+                latitude: -6.97286,
+                longitude: 107.632612
+              },
+              {
+                latitude: this.state.markerTest.latitude,
+                longitude: this.state.markerTest.longitude
+              }
+            ]}
+            strokeWidth={5}
+            strokeColor="magenta"
+          />
+          <Marker
             ref={marker => {
               this.marker = marker;
             }}
@@ -509,7 +537,7 @@ export default class App extends Component {
               source={require("./src/image/jamur.png")}
               style={{ width: 30, height: 30 }}
             />
-          </Marker.Animated>
+          </Marker>
           <Circle
             center={this.state.safezoneTesting}
             radius={this.state.safezoneRadiusTesting}
@@ -559,6 +587,25 @@ export default class App extends Component {
         <TouchableOpacity style={styles.plusButton} onPress={this.addMarker}>
           <Icon
             name="map-marker-plus"
+            size={33}
+            color="black"
+            style={{ left: 13 }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.plusButton} onPress={this.addMarker}>
+          <Icon
+            name="map-marker-plus"
+            size={33}
+            color="black"
+            style={{ left: 13 }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.setButton}
+          onPress={console.log("kepencet")}
+        >
+          <Icon
+            name="database-settings"
             size={33}
             color="black"
             style={{ left: 13 }}
@@ -623,6 +670,22 @@ const styles = StyleSheet.create({
     height: 56,
     bottom: 20,
     left: 90,
+    borderRadius: 50,
+    backgroundColor: "white",
+    alignItems: "center",
+    shadowColor: "black",
+    elevation: 7,
+    shadowRadius: 5,
+    shadowOpacity: 1
+  },
+  setButton: {
+    zIndex: 9,
+    position: "absolute",
+    flexDirection: "row",
+    width: width - 355,
+    height: 56,
+    bottom: 20,
+    left: 160,
     borderRadius: 50,
     backgroundColor: "white",
     alignItems: "center",
