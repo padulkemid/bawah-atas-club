@@ -80,17 +80,20 @@ export default class App extends Component {
         latitude: -6.972445,
         longitude: 107.631988
       },
+      markerTestTrack: {
+        latitude: -6.97286,
+        longitude: 107.632612
+      },
       safezoneRadiusTesting: 50,
       distanceTesting: 0
     };
   }
 
-  componentWillUnmount() {
+  componentWillMount() {
     this.requestGeolocation();
   }
 
   componentDidMount() {
-    this.requestGeolocation();
     this.checkPermission();
     firebase
       .database()
@@ -179,7 +182,11 @@ export default class App extends Component {
       .on("value", snapshot => {
         this.setState({
           distanceTesting: snapshot.val().distance,
-          safezoneRadiusTesting: snapshot.val().safezoneRadius
+          safezoneRadiusTesting: snapshot.val().safezoneRadius,
+          markerTestTrack: {
+            latitude: snapshot.val().latDistanceStart,
+            longitude: snapshot.val().lngDistanceStart
+          }
         });
       });
 
@@ -430,6 +437,12 @@ export default class App extends Component {
         latDistanceStart: dist.nativeEvent.coordinate.latitude,
         lngDistanceStart: dist.nativeEvent.coordinate.longitude
       });
+    firebase
+      .database()
+      .ref("/maps")
+      .update({
+        markerSelector: 4
+      });
   }
 
   submitSafezoneRadius = () => {
@@ -443,17 +456,6 @@ export default class App extends Component {
     };
     set(this.state.safezoneRadiusTesting);
   };
-
-  changeMarkerSelector = () => {
-    firebase
-      .database()
-      .ref("/maps")
-      .update({
-        markerSelector: 4
-      });
-  };
-
-
 
   render() {
     return (
@@ -513,8 +515,8 @@ export default class App extends Component {
           <Polyline
             coordinates={[
               {
-                latitude: -6.97286,
-                longitude: 107.632612
+                latitude: this.state.markerTestTrack.latitude,
+                longitude: this.state.markerTestTrack.longitude
               },
               {
                 latitude: this.state.markerTest.latitude,
@@ -529,7 +531,7 @@ export default class App extends Component {
               this.marker = marker;
             }}
             coordinate={this.state.markerTest}
-            onPress={this.changeMarkerSelector}
+            onPress={val => this.submitCoordsDistance(val)}
             title="Anda"
             description="Geolokasi GPS"
           >
@@ -595,17 +597,6 @@ export default class App extends Component {
         <TouchableOpacity style={styles.plusButton} onPress={this.addMarker}>
           <Icon
             name="map-marker-plus"
-            size={33}
-            color="black"
-            style={{ left: 13 }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.setButton}
-          onPress={console.log("kepencet")}
-        >
-          <Icon
-            name="database-settings"
             size={33}
             color="black"
             style={{ left: 13 }}

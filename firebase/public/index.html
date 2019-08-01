@@ -712,7 +712,9 @@
 				distanceTest,
 				safezoneLatTest,
 				safezoneLngTest,
-				safezoneRadiusTest;
+				safezoneRadiusTest,
+				latTest,
+				lngTest;
 
 			db.ref().on("value", function(val) {
 				safezoneLatTest = val.child("maps/Testing/safezoneLat").val();
@@ -723,6 +725,8 @@
 				markerLatTest = val.child("maps/Testing/latitude").val();
 				markerLngTest = val.child("maps/Testing/longitude").val();
 				distanceTest = val.child("maps/Testing/distance").val();
+				latTest = val.child("maps/Testing/latDistanceStart").val();
+				lngTest = val.child("maps/Testing/lngDistanceStart").val();
 			});
 
 			function testGeolocation() {
@@ -731,8 +735,8 @@
 						return (this * Math.PI) / 180;
 					};
 
-					var lat1 = -6.972860;
-					var lon1 = 107.632612;
+					var lat1 = latTest;
+					var lon1 = lngTest;
 
 					var R = 6371; // jari-jari bumi
 					var x1 = markerLatTest - lat1;
