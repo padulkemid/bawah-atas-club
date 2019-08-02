@@ -19,9 +19,11 @@ import MapView, {
   Animated,
   PROVIDER_GOOGLE
 } from "react-native-maps";
-import firebase from "react-native-firebase";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Geolocation from "react-native-geolocation-service";
+
+import firebase from "react-native-firebase";
+import type { Notification, NotificationOpen } from "react-native-firebase";
 
 import Andi from "./src/components/Andi/Marker";
 import SliderAndi from "./src/components/Andi/Slider";
@@ -96,6 +98,7 @@ export default class App extends Component {
 
   componentDidMount() {
     this.checkPermission();
+    this.createNotificationListeners();
     firebase
       .database()
       .ref("/maps/")
@@ -229,6 +232,10 @@ export default class App extends Component {
     );
   }
 
+  componentWillUnmount() {
+    this.notificationListener();
+  }
+
   async requestGeolocation() {
     try {
       const granted = await PermissionsAndroid.request(
@@ -295,6 +302,49 @@ export default class App extends Component {
       console.log("Ditolak, karena : ", error);
     }
   }
+
+  async createNotificationListeners() {
+    const channel = new firebase.notifications.Android.Channel(
+      "petaFadhil",
+      "Notifications",
+      firebase.notifications.Android.Importance.Max
+    )
+      .setVibrationPattern([500])
+      .setDescription("All Notifications");
+    firebase.notifications().android.createChannel(channel);
+
+    this.notificationListener = firebase
+      .notifications()
+      .onNotification(notification => {
+        console.log("onNotification notification-->", notification);
+        console.log("onNotification notification.data -->", notification.data);
+        console.log(
+          "onNotification notification.notification -->",
+          notification.notification
+        );
+        this.displayNotification(notification);
+      });
+  }
+
+  displayNotification = notification => {
+    const localNotification = new firebase.notifications.Notification({
+      sound: "default",
+      show_in_foreground: true
+    })
+      .setNotificationId(notification.notificationId)
+      .setTitle(notification.title)
+      .setSubtitle(notification.subtitle)
+      .setData(notification.data)
+      .setBody(notification.body)
+      .android.setChannelId("petaFadhil")
+      .android.setSmallIcon("ic_stat_ic_notification")
+      .android.setPriority(firebase.notifications.Android.Priority.High);
+
+    firebase
+      .notifications()
+      .displayNotification(localNotification)
+      .catch(err => console.error(err));
+  };
 
   showHide = () => {
     if (this.state.markerSelector === 1) {
