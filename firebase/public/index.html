@@ -3,7 +3,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
 		<link rel="icon" href="assets/img/favicon.ico" />
 		<title>TA Padil</title>
 
@@ -347,9 +347,14 @@
 					notification: {
 						title: "Andi berada dalam Safezone!",
 						body:
-							"Saat ini Andi dalam safezone, tetap pantau aktifitasnya!"
+							"Saat ini Andi dalam safezone, tetap pantau aktifitasnya!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
@@ -370,9 +375,14 @@
 					notification: {
 						title: "Berbahaya!",
 						body:
-							"Saat ini Andi berada di luar safezone, segera pantau dia!"
+							"Saat ini Andi berada di luar safezone, segera pantau dia!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
@@ -502,9 +512,14 @@
 					notification: {
 						title: "Paijo berada dalam Safezone!",
 						body:
-							"Saat ini Paijo dalam safezone, tetap pantau aktifitasnya!"
+							"Saat ini Paijo dalam safezone, tetap pantau aktifitasnya!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
@@ -525,9 +540,14 @@
 					notification: {
 						title: "Berbahaya!",
 						body:
-							"Saat ini Paijo berada di luar safezone, segera pantau dia!"
+							"Saat ini Paijo berada di luar safezone, segera pantau dia!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
@@ -661,9 +681,14 @@
 					notification: {
 						title: "Tukimin berada dalam Safezone!",
 						body:
-							"Saat ini Tukimin dalam safezone, tetap pantau aktifitasnya!"
+							"Saat ini Tukimin dalam safezone, tetap pantau aktifitasnya!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
@@ -684,9 +709,14 @@
 					notification: {
 						title: "Berbahaya!",
 						body:
-							"Saat ini Tukimin berada di luar safezone, segera pantau dia!"
+							"Saat ini Tukimin berada di luar safezone, segera pantau dia!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
@@ -804,9 +834,14 @@
 				const notif = {
 					notification: {
 						title: "Anda berada dalam Safezone!",
-						body: "Saat ini Anda dalam safezone, semua aman!"
+						body: "Saat ini Anda dalam safezone, semua aman!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
@@ -827,9 +862,14 @@
 					notification: {
 						title: "Berbahaya!",
 						body:
-							"Saat ini Anda berada di luar safezone, hati-hati!"
+							"Saat ini Anda berada di luar safezone, hati-hati!",
+						sound: "default",
+						android_channel_id: "petaFadhil",
+						high_priority: "high",
+						show_in_foreground: true
 					},
-					to: token
+					to: token,
+					priority: "high"
 				};
 
 				fetch("https://fcm.googleapis.com/fcm/send", {
