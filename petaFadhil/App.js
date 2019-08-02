@@ -190,7 +190,7 @@ export default class App extends Component {
         });
       });
 
-    this.watchID = navigator.geolocation.watchPosition(
+    navigator.geolocation.watchPosition(
       position => {
         this.setState({
           markerTest: {
@@ -210,10 +210,6 @@ export default class App extends Component {
       error => console.log(error),
       { enableHighAccuracy: true, distanceFilter: 0, maximumAge: 0 }
     );
-  }
-
-  componentWillUnmount() {
-    navigator.geolocation.clearWatch(this.watchID);
   }
 
   async requestGeolocation() {
