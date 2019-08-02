@@ -21,6 +21,7 @@ import MapView, {
 } from "react-native-maps";
 import firebase from "react-native-firebase";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Geolocation from "react-native-geolocation-service";
 
 import Andi from "./src/components/Andi/Marker";
 import SliderAndi from "./src/components/Andi/Slider";
@@ -186,11 +187,19 @@ export default class App extends Component {
           markerTestTrack: {
             latitude: snapshot.val().latDistanceStart,
             longitude: snapshot.val().lngDistanceStart
+          },
+          safezoneMarkerTest: {
+            latitude: snapshot.val().safezoneLat,
+            longitude: snapshot.val().safezoneLng
+          },
+          safezoneTesting: {
+            latitude: snapshot.val().safezoneLat,
+            longitude: snapshot.val().safezoneLng
           }
         });
       });
 
-    navigator.geolocation.watchPosition(
+    Geolocation.watchPosition(
       position => {
         this.setState({
           markerTest: {
@@ -206,9 +215,17 @@ export default class App extends Component {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
           });
+
+        console.log(position);
       },
       error => console.log(error),
-      { enableHighAccuracy: true, distanceFilter: 0, maximumAge: 0 }
+      {
+        enableHighAccuracy: true,
+        distanceFilter: 0,
+        maximumAge: 0,
+        interval: 1000,
+        fastestInterval: 500
+      }
     );
   }
 
@@ -251,7 +268,7 @@ export default class App extends Component {
       fcmToken = await firebase.messaging().getToken();
       if (fcmToken) {
         await AsyncStorage.setItem("fcmToken", fcmToken);
-        console.log("token anda yang mulia :", fcmToken);
+        console.log("token baru :", fcmToken);
         firebase
           .database()
           .ref("/maps")
@@ -260,7 +277,7 @@ export default class App extends Component {
           });
       }
     } else {
-      console.log("token old maneh:", fcmToken);
+      console.log("token lama :", fcmToken);
       firebase
         .database()
         .ref("/maps")

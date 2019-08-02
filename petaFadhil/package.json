@@ -11,6 +11,7 @@
     "react": "16.6.3",
     "react-native": "0.58.4",
     "react-native-firebase": "^5.2.2",
+    "react-native-geolocation-service": "^3.0.0",
     "react-native-maps": "^0.23.0",
     "react-native-vector-icons": "^6.3.0"
   },

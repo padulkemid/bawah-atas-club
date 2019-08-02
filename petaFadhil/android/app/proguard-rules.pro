@@ -16,5 +16,12 @@
 #   public *;
 #}
 
+# RNFirebase
 -keep class io.invertase.firebase.** { *; }
 -dontwarn io.invertase.firebase.**
+
+# Google Play Services
+#-keep class com.google.android.gms.** { *; }
+#-dontwarn com.google.android.gms.**
+#-keep class com.google.firebase.** { *; }
+#-dontwarn com.google.firebase.**
