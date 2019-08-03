@@ -309,7 +309,9 @@ export default class App extends Component {
       "Notifications",
       firebase.notifications.Android.Importance.Max
     )
-      .setVibrationPattern([500])
+      .enableVibration(true)
+      .setVibrationPattern([500, 500])
+      .setLightColor("magenta")
       .setDescription("All Notifications");
     firebase.notifications().android.createChannel(channel);
 
