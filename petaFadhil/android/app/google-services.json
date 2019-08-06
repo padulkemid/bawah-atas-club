@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1075312514568:android:2c4a480cd699cfa8",
+        "android_client_info": {
+          "package_name": "com.monitorlokasianak.fadhilmuhammad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075312514568-sgd51dk08ojbounv3r93kbdf0vv1b1ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASNoIc_Uo1Za_bLtkEGXqRWtOMzSVfUb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075312514568-sgd51dk08ojbounv3r93kbdf0vv1b1ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1075312514568:android:e65fc0c437332154",
         "android_client_info": {
           "package_name": "com.petafadhil"
