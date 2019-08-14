@@ -667,14 +667,6 @@ export default class App extends Component {
             style={{ left: 13 }}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.plusButton} onPress={this.addMarker}>
-          <Icon
-            name="map-marker-plus"
-            size={33}
-            color="black"
-            style={{ left: 13 }}
-          />
-        </TouchableOpacity>
         {this.state.propsAndi.distance ? <DistanceAndi /> : null}
         {this.state.propsPaijo.distance ? <DistancePaijo /> : null}
         {this.state.propsTukimin.distance ? <DistanceTukimin /> : null}
@@ -734,22 +726,6 @@ const styles = StyleSheet.create({
     height: 56,
     bottom: 20,
     left: 90,
-    borderRadius: 50,
-    backgroundColor: "white",
-    alignItems: "center",
-    shadowColor: "black",
-    elevation: 7,
-    shadowRadius: 5,
-    shadowOpacity: 1
-  },
-  setButton: {
-    zIndex: 9,
-    position: "absolute",
-    flexDirection: "row",
-    width: width - 355,
-    height: 56,
-    bottom: 20,
-    left: 160,
     borderRadius: 50,
     backgroundColor: "white",
     alignItems: "center",
