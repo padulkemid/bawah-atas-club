@@ -97,14 +97,14 @@
 						class="btn"
 						onclick="testGeolocation()"
 					>
-						Geolocation Test Start
+						Pengujian Rapael
 					</button>
 					<button
 						id="geo-test"
 						class="btn"
 						onclick="stopGeolocation()"
 					>
-						Geolocation Test Stop
+						Stop Pengujian Rapael
 					</button>
 				</div>
 				<div class="col-sm-2">
@@ -219,7 +219,7 @@
 					}
 				}
 			});
-			db.ref("/maps/Testing").on("child_changed", function(data) {
+			db.ref("/maps/TestingRaps").on("child_changed", function(data) {
 				if (data.key === "position") {
 					console.log(data.val());
 					if (data.val() === "Inside Safezone") {
@@ -747,16 +747,16 @@
 				lngTest;
 
 			db.ref().on("value", function(val) {
-				safezoneLatTest = val.child("maps/Testing/safezoneLat").val();
-				safezoneLngTest = val.child("maps/Testing/safezoneLng").val();
+				safezoneLatTest = val.child("maps/TestingRaps/safezoneLat").val();
+				safezoneLngTest = val.child("maps/TestingRaps/safezoneLng").val();
 				safezoneRadiusTest = val
-					.child("maps/Testing/safezoneRadius")
+					.child("maps/TestingRaps/safezoneRadius")
 					.val();
 				markerLatTest = val.child("maps/Testing/latitude").val();
 				markerLngTest = val.child("maps/Testing/longitude").val();
-				distanceTest = val.child("maps/Testing/distance").val();
-				latTest = val.child("maps/Testing/latDistanceStart").val();
-				lngTest = val.child("maps/Testing/lngDistanceStart").val();
+				distanceTest = val.child("maps/TestingRaps/distance").val();
+				latTest = val.child("maps/TestingRaps/latDistanceStart").val();
+				lngTest = val.child("maps/TestingRaps/lngDistanceStart").val();
 			});
 
 			function testGeolocation() {
@@ -784,7 +784,7 @@
 					var conversion = d * 1000; // ke meter
 					var result = conversion.toFixed(2);
 
-					db.ref("maps/Testing").update({
+					db.ref("maps/TestingRaps").update({
 						distance: result
 					});
 				}, 1000);
@@ -809,16 +809,16 @@
 					var centerConversion = o * 1000;
 					var centerResult = centerConversion.toFixed(2);
 
-					db.ref("maps/Testing").update({
+					db.ref("maps/TestingRaps").update({
 						center: centerResult
 					});
 
 					if (centerResult <= safezoneRadiusTest) {
-						db.ref("maps/Testing").update({
+						db.ref("maps/TestingRaps").update({
 							position: "Inside Safezone"
 						});
 					} else {
-						db.ref("maps/Testing").update({
+						db.ref("maps/TestingRaps").update({
 							position: "Outside Safezone"
 						});
 					}
