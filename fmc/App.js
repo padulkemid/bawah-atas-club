@@ -505,7 +505,7 @@ export default class App extends Component {
     let set = radius => {
       firebase
         .database()
-        .ref('/maps/Testing/')
+        .ref('/maps/TestingRaps/')
         .update({
           safezoneRadius: radius,
         });
@@ -567,20 +567,6 @@ export default class App extends Component {
           {this.state.markerAndi ? <Andi /> : null}
           {this.state.markerPaijo ? <Paijo /> : null}
           {this.state.markerTukimin ? <Tukimin /> : null}
-          <Polyline
-            coordinates={[
-              {
-                latitude: this.state.markerTestTrack.latitude,
-                longitude: this.state.markerTestTrack.longitude,
-              },
-              {
-                latitude: this.state.markerTest.latitude,
-                longitude: this.state.markerTest.longitude,
-              },
-            ]}
-            strokeWidth={5}
-            strokeColor="magenta"
-          />
           <Marker
             ref={marker => {
               this.marker = marker;
