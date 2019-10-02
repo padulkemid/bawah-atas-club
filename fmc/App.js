@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -20,60 +20,25 @@ import MapView, {
   PROVIDER_GOOGLE,
 } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Geolocation from 'react-native-geolocation-service';
-
 import firebase from 'react-native-firebase';
-import type {Notification, NotificationOpen} from 'react-native-firebase';
+import type { Notification, NotificationOpen } from 'react-native-firebase';
 
-import Andi from './src/components/Andi/Marker';
-import SliderAndi from './src/components/Andi/Slider';
-import DistanceAndi from './src/components/Andi/Distance';
-
-import Paijo from './src/components/Paijo/Marker';
-import SliderPaijo from './src/components/Paijo/Slider';
-import DistancePaijo from './src/components/Paijo/Distance';
-
-import Tukimin from './src/components/Tukimin/Marker';
-import SliderTukimin from './src/components/Tukimin/Slider';
-import DistanceTukimin from './src/components/Tukimin/Distance';
-
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      markerSelector: 1,
-      addSelector: 1,
       region: {
         latitude: -6.970547,
         longitude: 107.632662,
         latitudeDelta: 0.0058,
         longitudeDelta: 0.005,
       },
-      markerAndi: true,
-      propsAndi: {
-        slider: false,
-        distance: false,
-      },
-      markerPaijo: true,
-      propsPaijo: {
-        slider: false,
-        distance: false,
-      },
-      markerTukimin: true,
-      propsTukimin: {
-        slider: false,
-        distance: false,
-      },
       markerTest: {
         latitude: -6.97286,
         longitude: 107.632612,
-      },
-      markerTestProps: {
-        slider: false,
-        distance: false,
       },
       safezoneMarkerTest: {
         latitude: -6.972445,
@@ -92,98 +57,13 @@ export default class App extends Component {
     };
   }
 
-  componentWillMount() {
-    this.requestGeolocation();
-  }
-
   componentDidMount() {
-    this.checkPermission();
+    this.requestPermission();
     this.createNotificationListeners();
     firebase
       .database()
-      .ref('/maps/')
-      .on('value', snapshot => {
-        this.setState({
-          addSelector: snapshot.val().addSelector,
-          markerSelector: snapshot.val().markerSelector,
-          markerAndi: snapshot.val().markerAndi,
-          markerPaijo: snapshot.val().markerPaijo,
-          markerTukimin: snapshot.val().markerTukimin,
-        });
-        if (this.state.markerSelector === 1) {
-          this.setState({
-            propsPaijo: {
-              slider: false,
-              distance: false,
-            },
-            propsTukimin: {
-              slider: false,
-              distance: false,
-            },
-            markerTestProps: {
-              slider: false,
-              distance: false,
-            },
-          });
-        } else if (this.state.markerSelector === 2) {
-          this.setState({
-            propsAndi: {
-              slider: false,
-              distance: false,
-            },
-            propsTukimin: {
-              slider: false,
-              distance: false,
-            },
-            markerTestProps: {
-              slider: false,
-              distance: false,
-            },
-          });
-        } else if (this.state.markerSelector === 3) {
-          this.setState({
-            propsAndi: {
-              slider: false,
-              distance: false,
-            },
-            propsPaijo: {
-              slider: false,
-              distance: false,
-            },
-            markerTestProps: {
-              slider: false,
-              distance: false,
-            },
-          });
-        } else if (this.state.markerSelector === 4) {
-          this.setState({
-            propsTukimin: {
-              slider: false,
-              distance: false,
-            },
-            propsAndi: {
-              slider: false,
-              distance: false,
-            },
-            propsPaijo: {
-              slider: false,
-              distance: false,
-            },
-          });
-        }
-      });
-
-    firebase
-      .database()
-      .ref('/maps/')
-      .update({
-        addSelector: 2,
-      });
-
-    firebase
-      .database()
       .ref('/maps/TestingRaps/')
-      .on('value', snapshot => {
+      .on('value', (snapshot) => {
         this.setState({
           distanceTesting: snapshot.val().distance,
           safezoneRadiusTesting: snapshot.val().safezoneRadius,
@@ -205,7 +85,7 @@ export default class App extends Component {
     firebase
       .database()
       .ref('/maps/Testing')
-      .on('value', snapshot => {
+      .on('value', (snapshot) => {
         this.setState({
           markerTest: {
             latitude: snapshot.val().latitude,
@@ -217,30 +97,6 @@ export default class App extends Component {
 
   componentWillUnmount() {
     this.notificationListener();
-  }
-
-  async requestGeolocation() {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-        {
-          title: 'Izinkan Penggunaan GPS ?',
-          message: 'Geolocation dibutuhkan untuk pengujian alat.',
-          buttonNegative: 'Tidak',
-          buttonPositive: 'Ya',
-        },
-      );
-      const ask = await PermissionsAndroid.check(
-        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      );
-      if (ask) {
-        console.log('GPS Dibolehkan');
-      } else {
-        console.log('GPS Tidak Diperbolehkan');
-      }
-    } catch (error) {
-      console.warn(error);
-    }
   }
 
   async checkPermission() {
@@ -288,9 +144,9 @@ export default class App extends Component {
 
   async createNotificationListeners() {
     const channel = new firebase.notifications.Android.Channel(
-      'petaFadhil',
+      'Find My Children',
       'Notifications',
-      firebase.notifications.Android.Importance.Max,
+      firebase.notifications.Android.Importance.Max
     )
       .enableVibration(true)
       .setVibrationPattern([500, 500])
@@ -298,20 +154,15 @@ export default class App extends Component {
       .setDescription('All Notifications');
     firebase.notifications().android.createChannel(channel);
 
-    this.notificationListener = firebase
-      .notifications()
-      .onNotification(notification => {
-        console.log('onNotification notification-->', notification);
-        console.log('onNotification notification.data -->', notification.data);
-        console.log(
-          'onNotification notification.notification -->',
-          notification.notification,
-        );
-        this.displayNotification(notification);
-      });
+    this.notificationListener = firebase.notifications().onNotification((notification) => {
+      console.log('onNotification notification-->', notification);
+      console.log('onNotification notification.data -->', notification.data);
+      console.log('onNotification notification.notification -->', notification.notification);
+      this.displayNotification(notification);
+    });
   }
 
-  displayNotification = notification => {
+  displayNotification = (notification) => {
     const localNotification = new firebase.notifications.Notification({
       sound: 'default',
       show_in_foreground: true,
@@ -321,168 +172,14 @@ export default class App extends Component {
       .setSubtitle(notification.subtitle)
       .setData(notification.data)
       .setBody(notification.body)
-      .android.setChannelId('petaFadhil')
+      .android.setChannelId('Find My Children')
       .android.setSmallIcon('ic_stat_ic_notification')
       .android.setPriority(firebase.notifications.Android.Priority.High);
 
     firebase
       .notifications()
       .displayNotification(localNotification)
-      .catch(err => console.error(err));
-  };
-
-  showHide = () => {
-    if (this.state.markerSelector === 1) {
-      this.setState(prevState => ({
-        propsAndi: {
-          slider: !prevState.propsAndi.slider,
-          distance: !prevState.propsAndi.distance,
-        },
-        propsPaijo: {
-          slider: false,
-          distance: false,
-        },
-        propsTukimin: {
-          slider: false,
-          distance: false,
-        },
-        markerTestProps: {
-          slider: false,
-          distance: false,
-        },
-      }));
-    } else if (this.state.markerSelector === 2) {
-      this.setState(prevState => ({
-        propsPaijo: {
-          slider: !prevState.propsPaijo.slider,
-          distance: !prevState.propsPaijo.distance,
-        },
-        propsAndi: {
-          slider: false,
-          distance: false,
-        },
-        propsTukimin: {
-          slider: false,
-          distance: false,
-        },
-        markerTestProps: {
-          slider: false,
-          distance: false,
-        },
-      }));
-    } else if (this.state.markerSelector === 3) {
-      this.setState(prevState => ({
-        propsTukimin: {
-          slider: !prevState.propsTukimin.slider,
-          distance: !prevState.propsTukimin.distance,
-        },
-        propsAndi: {
-          slider: false,
-          distance: false,
-        },
-        propsPaijo: {
-          slider: false,
-          distance: false,
-        },
-        markerTestProps: {
-          slider: false,
-          distance: false,
-        },
-      }));
-    } else if (this.state.markerSelector === 4) {
-      this.setState(prevState => ({
-        markerTestProps: {
-          slider: !prevState.markerTestProps.slider,
-          distance: !prevState.markerTestProps.distance,
-        },
-        propsTukimin: {
-          slider: false,
-          distance: false,
-        },
-        propsAndi: {
-          slider: false,
-          distance: false,
-        },
-        propsPaijo: {
-          slider: false,
-          distance: false,
-        },
-      }));
-    }
-  };
-
-  addMarker = () => {
-    if (this.state.addSelector === 1) {
-      firebase
-        .database()
-        .ref('/maps/')
-        .update({
-          addSelector: 2,
-          markerAndi: true,
-        });
-    } else if (this.state.addSelector === 2) {
-      firebase
-        .database()
-        .ref('/maps/')
-        .update({
-          addSelector: 3,
-          markerPaijo: true,
-        });
-    } else if (this.state.addSelector === 3) {
-      firebase
-        .database()
-        .ref('/maps/')
-        .update({
-          addSelector: 1,
-          markerTukimin: true,
-        });
-    }
-  };
-
-  deleteMarker = () => {
-    if (this.state.markerSelector === 1) {
-      firebase
-        .database()
-        .ref('/maps/')
-        .update({
-          addSelector: 2,
-          markerAndi: false,
-        });
-      this.setState({
-        propsAndi: {
-          slider: false,
-          distance: false,
-        },
-      });
-    } else if (this.state.markerSelector === 2) {
-      firebase
-        .database()
-        .ref('/maps/')
-        .update({
-          addSelector: 3,
-          markerPaijo: false,
-        });
-      this.setState({
-        propsPaijo: {
-          slider: false,
-          distance: false,
-        },
-      });
-    } else if (this.state.markerSelector === 3) {
-      firebase
-        .database()
-        .ref('/maps/')
-        .update({
-          addSelector: 1,
-          markerTukimin: false,
-        });
-      this.setState({
-        propsTukimin: {
-          slider: false,
-          distance: false,
-        },
-      });
-    }
+      .catch((err) => console.error(err));
   };
 
   submitCoordsDistance(dist) {
@@ -493,16 +190,10 @@ export default class App extends Component {
         latDistanceStart: dist.nativeEvent.coordinate.latitude,
         lngDistanceStart: dist.nativeEvent.coordinate.longitude,
       });
-    firebase
-      .database()
-      .ref('/maps')
-      .update({
-        markerSelector: 4,
-      });
   }
 
   submitSafezoneRadius = () => {
-    let set = radius => {
+    let set = (radius) => {
       firebase
         .database()
         .ref('/maps/TestingRaps/')
@@ -516,43 +207,36 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.propsAndi.slider ? <SliderAndi /> : null}
-        {this.state.propsPaijo.slider ? <SliderPaijo /> : null}
-        {this.state.propsTukimin.slider ? <SliderTukimin /> : null}
-        {this.state.markerTestProps.slider ? (
-          <TouchableOpacity style={styles.sliderBg}>
-            <View style={styles.leftCol}>
-              <Icon
-                name="map-marker-radius"
-                size={33}
-                color="black"
-                style={{alignSelf: 'center'}}
-              />
-            </View>
+        <TouchableOpacity style={styles.sliderBg}>
+          <View style={styles.leftCol}>
+            <Icon
+              name="map-marker-radius"
+              size={33}
+              color="black"
+              style={{ alignSelf: 'center' }}
+            />
+          </View>
 
-            <View style={styles.centerCol}>
-              <Slider
-                minimumTrackTintColor="magenta"
-                maximumTrackTintColor="darkmagenta"
-                step={5}
-                minimumValue={10}
-                maximumValue={100}
-                value={this.state.safezoneRadiusTesting}
-                onValueChange={val =>
-                  this.setState({safezoneRadiusTesting: val})
-                }
-                onSlidingComplete={this.submitSafezoneRadius}
-                thumbTintColor="magenta"
-              />
-            </View>
+          <View style={styles.centerCol}>
+            <Slider
+              minimumTrackTintColor="magenta"
+              maximumTrackTintColor="darkmagenta"
+              step={5}
+              minimumValue={10}
+              maximumValue={100}
+              value={this.state.safezoneRadiusTesting}
+              onValueChange={(val) => this.setState({ safezoneRadiusTesting: val })}
+              onSlidingComplete={this.submitSafezoneRadius}
+              thumbTintColor="magenta"
+            />
+          </View>
 
-            <View style={styles.rightCol}>
-              <Text style={{fontSize: 21, textAlign: 'center'}}>
-                {this.state.safezoneRadiusTesting}m
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ) : null}
+          <View style={styles.rightCol}>
+            <Text style={{ fontSize: 21, textAlign: 'center' }}>
+              {this.state.safezoneRadiusTesting}m
+            </Text>
+          </View>
+        </TouchableOpacity>
 
         <MapView
           initialRegion={this.state.region}
@@ -560,25 +244,19 @@ export default class App extends Component {
           followUserLocation={true}
           showsMyLocationButton={true}
           rotateEnabled={false}
-          style={{flex: 1}}
-          ref={map => {
+          style={{ flex: 1 }}
+          ref={(map) => {
             this.map = map;
           }}>
-          {this.state.markerAndi ? <Andi /> : null}
-          {this.state.markerPaijo ? <Paijo /> : null}
-          {this.state.markerTukimin ? <Tukimin /> : null}
           <Marker
-            ref={marker => {
+            ref={(marker) => {
               this.marker = marker;
             }}
             coordinate={this.state.markerTest}
-            onPress={val => this.submitCoordsDistance(val)}
-            title="Anda"
-            description="Geolokasi GPS">
-            <Image
-              source={require('./src/image/jamur.png')}
-              style={{width: 30, height: 30}}
-            />
+            onPress={(val) => this.submitCoordsDistance(val)}
+            title="Rapael"
+            description="Geolokasi Alat">
+            <Image source={require('./src/image/jamur.png')} style={{ width: 30, height: 30 }} />
           </Marker>
           <Circle
             center={this.state.safezoneTesting}
@@ -589,7 +267,7 @@ export default class App extends Component {
           />
           <Marker
             coordinate={this.state.safezoneMarkerTest}
-            onDrag={val =>
+            onDrag={(val) =>
               this.setState({
                 safezoneTesting: {
                   latitude: val.nativeEvent.coordinate.latitude,
@@ -597,65 +275,41 @@ export default class App extends Component {
                 },
               })
             }
-            onDragEnd={val =>
+            onDragEnd={(val) =>
               firebase
                 .database()
-                .ref('/maps/Testing/')
+                .ref('/maps/TestingRaps/')
                 .update({
                   safezoneLat: val.nativeEvent.coordinate.latitude,
                   safezoneLng: val.nativeEvent.coordinate.longitude,
                 })
             }
             draggable>
-            <Image
-              source={require('./src/image/bunga.png')}
-              style={{width: 30, height: 30}}
-            />
+            <Image source={require('./src/image/bunga.png')} style={{ width: 30, height: 30 }} />
           </Marker>
         </MapView>
 
-        <TouchableOpacity
-          style={styles.minusButton}
-          onPress={this.deleteMarker}>
-          <Icon
-            name="map-marker-minus"
-            size={33}
-            color="black"
-            style={{left: 13}}
-          />
+        <TouchableOpacity style={styles.minusButton} onPress={this.deleteMarker}>
+          <Icon name="map-marker-minus" size={33} color="black" style={{ left: 13 }} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.plusButton} onPress={this.addMarker}>
-          <Icon
-            name="map-marker-plus"
-            size={33}
-            color="black"
-            style={{left: 13}}
-          />
+          <Icon name="map-marker-plus" size={33} color="black" style={{ left: 13 }} />
         </TouchableOpacity>
-        {this.state.propsAndi.distance ? <DistanceAndi /> : null}
-        {this.state.propsPaijo.distance ? <DistancePaijo /> : null}
-        {this.state.propsTukimin.distance ? <DistanceTukimin /> : null}
-        {this.state.markerTestProps.distance ? (
-          <TouchableOpacity style={styles.distanceBg}>
-            <View style={styles.leftCol}>
-              <Icon
-                name="run"
-                size={33}
-                color="black"
-                style={{alignSelf: 'center'}}
-              />
-            </View>
 
-            <View style={styles.centerCol}>
-              <Text style={{textAlign: 'center', fontSize: 21}}>
-                {this.state.distanceTesting} m
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ) : null}
+        <TouchableOpacity style={styles.distanceBg}>
+          <View style={styles.leftCol}>
+            <Icon name="run" size={33} color="black" style={{ alignSelf: 'center' }} />
+          </View>
+
+          <View style={styles.centerCol}>
+            <Text style={{ textAlign: 'center', fontSize: 21 }}>
+              {this.state.distanceTesting} m
+            </Text>
+          </View>
+        </TouchableOpacity>
 
         <TouchableOpacity style={styles.sliderButton} onPress={this.showHide}>
-          <Icon name="settings" size={33} color="black" style={{left: 13}} />
+          <Icon name="settings" size={33} color="black" style={{ left: 13 }} />
         </TouchableOpacity>
       </View>
     );

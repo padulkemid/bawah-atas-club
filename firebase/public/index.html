@@ -1,889 +1,832 @@
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="icon" href="assets/img/favicon.ico" />
-		<title>TA Padil</title>
+    <link rel="icon" href="assets/img/favicon.ico" />
+    <title>TA Padil</title>
 
-		<!-- Bootstrap -->
-		<link href="assets/css/bootstrap.css" rel="stylesheet" />
-		<!-- Mountain's properties -->
-		<link href="assets/css/mountain.css" rel="stylesheet" />
-		<!-- Font Awesome -->
-		<link href="assets/css/font-awesome.css" rel="stylesheet" />
-		<!-- Google Fonts -->
-		<link
-			href="https://fonts.googleapis.com/css?family=Indie+Flower|Lato"
-			rel="stylesheet"
-		/>
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- Mountain's properties -->
+    <link href="assets/css/mountain.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lato" rel="stylesheet" />
 
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-		<!-- Jumbotron Atas ( Welcome ) -->
-		<div class="jumbotron parallax" id="top-jumbotron">
-			<div class="container" align="center">
-				<h1>Fadhil Muhammad</h1>
-				<h2>Tes Pengujian Aplikasi</h2>
-			</div>
-		</div>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Jumbotron Atas ( Welcome ) -->
+    <div class="jumbotron parallax" id="top-jumbotron">
+      <div class="container" align="center">
+        <h1>Fadhil Muhammad</h1>
+        <h2>Tes Pengujian Aplikasi</h2>
+      </div>
+    </div>
 
-		<!-- Untuk button penambahan -->
+    <!-- Untuk button penambahan -->
 
-		<div id="triple-features" class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					<h4 align="center">Status Andi</h4>
-					<p id="status-andi"></p>
-					<h4 align="center">Status Paijo</h4>
-					<p id="status-paijo"></p>
-					<h4 align="center">Status Tukimin</h4>
-					<p id="status-tukimin"></p>
-				</div>
-				<div class="col-sm-3">
-					<button
-						id="move-andi"
-						class="btn"
-						onclick="moveMarkerAndi()"
-					>
-						Move Andi
-					</button>
-					<button
-						id="move-paijo"
-						class="btn"
-						onclick="moveMarkerPaijo()"
-					>
-						Move Paijo
-					</button>
-					<button
-						id="move-tukimin"
-						class="btn"
-						onclick="moveMarkerTukimin()"
-					>
-						Move Tukimin
-					</button>
-				</div>
-				<div class="col-sm-3">
-					<button
-						id="stop-andi"
-						class="btn"
-						onclick="stopMarkerAndi()"
-					>
-						Stop Andi
-					</button>
-					<button
-						id="stop-paijo"
-						class="btn"
-						onclick="stopMarkerPaijo()"
-					>
-						Stop Paijo
-					</button>
-					<button
-						id="stop-tukimin"
-						class="btn"
-						onclick="stopMarkerTukimin()"
-					>
-						Stop Tukimin
-					</button>
-					<button
-						id="geo-test"
-						class="btn"
-						onclick="testGeolocation()"
-					>
-						Pengujian Rapael
-					</button>
-					<button
-						id="geo-test"
-						class="btn"
-						onclick="stopGeolocation()"
-					>
-						Stop Pengujian Rapael
-					</button>
-				</div>
-				<div class="col-sm-2">
-					<button
-						id="reset-andi"
-						class="btn"
-						onclick="resetMarkerAndi()"
-					>
-						Reset Andi
-					</button>
-					<button
-						id="reset-paijo"
-						class="btn"
-						onclick="resetMarkerPaijo()"
-					>
-						Reset Paijo
-					</button>
-					<button
-						id="reset-tukimin"
-						class="btn"
-						onclick="resetMarkerTukimin()"
-					>
-						Reset Tukimin
-					</button>
-				</div>
-			</div>
-		</div>
+    <div id="triple-features" class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <h4 align="center">Status Andi</h4>
+          <p id="status-andi"></p>
+          <h4 align="center">Status Paijo</h4>
+          <p id="status-paijo"></p>
+          <h4 align="center">Status Tukimin</h4>
+          <p id="status-tukimin"></p>
+        </div>
+        <div class="col-sm-3">
+          <button id="move-andi" class="btn" onclick="moveMarkerAndi()">
+            Move Andi
+          </button>
+          <button id="move-paijo" class="btn" onclick="moveMarkerPaijo()">
+            Move Paijo
+          </button>
+          <button id="move-tukimin" class="btn" onclick="moveMarkerTukimin()">
+            Move Tukimin
+          </button>
+        </div>
+        <div class="col-sm-3">
+          <button id="stop-andi" class="btn" onclick="stopMarkerAndi()">
+            Stop Andi
+          </button>
+          <button id="stop-paijo" class="btn" onclick="stopMarkerPaijo()">
+            Stop Paijo
+          </button>
+          <button id="stop-tukimin" class="btn" onclick="stopMarkerTukimin()">
+            Stop Tukimin
+          </button>
+          <button id="geo-test" class="btn" onclick="testGeolocation()">
+            Pengujian Rapael
+          </button>
+          <button id="geo-test" class="btn" onclick="stopGeolocation()">
+            Stop Pengujian Rapael
+          </button>
+        </div>
+        <div class="col-sm-2">
+          <button id="reset-andi" class="btn" onclick="resetMarkerAndi()">
+            Reset Andi
+          </button>
+          <button id="reset-paijo" class="btn" onclick="resetMarkerPaijo()">
+            Reset Paijo
+          </button>
+          <button id="reset-tukimin" class="btn" onclick="resetMarkerTukimin()">
+            Reset Tukimin
+          </button>
+        </div>
+      </div>
+    </div>
 
-		<!-- Javascripts -->
-		<!-- Placed at the end of documents for faster loading -->
-		<!-- Core -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.js"></script>
-		<!-- Navbar opacity scrolling changes  -->
-		<script>
-			$(document).on("scroll", function(e) {
-				$(".navbar").css("opacity", $(document).scrollTop() / 300);
-			});
-		</script>
+    <!-- Javascripts -->
+    <!-- Placed at the end of documents for faster loading -->
+    <!-- Core -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- Navbar opacity scrolling changes  -->
+    <script>
+      $(document).on('scroll', function(e) {
+        $('.navbar').css('opacity', $(document).scrollTop() / 300);
+      });
+    </script>
 
-		<!-- Firebase -->
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
 		     https://firebase.google.com/docs/web/setup#config-web-app -->
-		<script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
-
-		<script>
-			// Your web app's Firebase configuration
-			var firebaseConfig = {
-				apiKey: "AIzaSyAUTHsQv9RvC6oX2WvENKTPwy_dpsdwyVQ",
-				authDomain: "project-similo.firebaseapp.com",
-				databaseURL: "https://project-similo.firebaseio.com",
-				projectId: "project-similo",
-				storageBucket: "project-similo.appspot.com",
-				messagingSenderId: "1075312514568",
-				appId: "1:1075312514568:web:0aafdd24d0ca54b2"
-			};
-			// Initialize Firebase
-			firebase.initializeApp(firebaseConfig);
-		</script>
-		<!-- Ambil data dari firebase -->
-		<script>
-			var db = firebase.database();
-
-			var fcmToken, statusAndi, statusPaijo, statusTukimin;
-
-			db.ref().on("value", function(status) {
-				fcmToken = status.child("maps/fcmToken").val();
-
-				statusAndi = status.child("maps/Andi/status").val();
-				statusPaijo = status.child("maps/Paijo/status").val();
-				statusTukimin = status.child("maps/Tukimin/status").val();
-
-				document.getElementById("status-andi").innerHTML = statusAndi;
-				document.getElementById("status-paijo").innerHTML = statusPaijo;
-				document.getElementById(
-					"status-tukimin"
-				).innerHTML = statusTukimin;
-			});
-
-			db.ref("/maps/Andi").on("child_changed", function(data) {
-				if (data.key === "position") {
-					console.log(data.val());
-					if (data.val() === "Inside Safezone") {
-						sendInsideNotificationAndi(fcmToken);
-					} else if (data.val() === "Outside Safezone") {
-						sendOutsideNotificationAndi(fcmToken);
-					}
-				}
-			});
-
-			db.ref("/maps/Paijo").on("child_changed", function(data) {
-				if (data.key === "position") {
-					console.log(data.val());
-					if (data.val() === "Inside Safezone") {
-						sendInsideNotificationPaijo(fcmToken);
-					} else if (data.val() === "Outside Safezone") {
-						sendOutsideNotificationPaijo(fcmToken);
-					}
-				}
-			});
-
-			db.ref("/maps/Tukimin").on("child_changed", function(data) {
-				if (data.key === "position") {
-					console.log(data.val());
-					if (data.val() === "Inside Safezone") {
-						sendInsideNotificationTukimin(fcmToken);
-					} else if (data.val() === "Outside Safezone") {
-						sendOutsideNotificationTukimin(fcmToken);
-					}
-				}
-			});
-			db.ref("/maps/TestingRaps").on("child_changed", function(data) {
-				if (data.key === "position") {
-					console.log(data.val());
-					if (data.val() === "Inside Safezone") {
-						sendInsideNotificationTest(fcmToken);
-					} else if (data.val() === "Outside Safezone") {
-						sendOutsideNotificationTest(fcmToken);
-					}
-				}
-			});
-		</script>
-
-		<!-- Andi -->
-
-		<script>
-			var startAndi, centerAndi;
-			var markerLatAndi,
-				markerLngAndi,
-				distanceAndi,
-				safezoneLatAndi,
-				safezoneLngAndi,
-				safezoneRadiusAndi;
-
-			db.ref().on("value", function(val) {
-				safezoneLatAndi = val.child("maps/Andi/safezoneLat").val();
-				safezoneLngAndi = val.child("maps/Andi/safezoneLng").val();
-				safezoneRadiusAndi = val
-					.child("maps/Andi/safezoneRadius")
-					.val();
-				markerLatAndi = val.child("maps/Andi/markerLat").val();
-				markerLngAndi = val.child("maps/Andi/markerLng").val();
-				distanceAndi = val.child("maps/Andi/distance").val();
-			});
-
-			function moveMarkerAndi() {
-				startAndi = setInterval(function() {
-					db.ref("maps/Andi").update({
-						markerLat: markerLatAndi + 0.000008, //0.000005 = 0.8 meter berpindah , 0.000006 = 1 meter
-						markerLng: markerLngAndi - 0.000008
-					});
-
-					// Haversine Formula
-					// https://www.movable-type.co.uk/scripts/latlong.html
-
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-
-					var lat1 = -6.973119;
-					var lon1 = 107.633219;
-
-					var R = 6371; // jari-jari bumi
-					var x1 = markerLatAndi - lat1;
-					var dLat = x1.toRad();
-					var x2 = markerLngAndi - lon1;
-					var dLon = x2.toRad();
-					var a =
-						Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-						Math.cos(lat1.toRad()) *
-							Math.cos(markerLatAndi.toRad()) *
-							Math.sin(dLon / 2) *
-							Math.sin(dLon / 2);
-					var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-					var d = R * c;
-					var conversion = d * 1000; // ke meter
-					var result = conversion.toFixed(2);
-
-					db.ref("maps/Andi").update({
-						distance: result
-					});
-				}, 1000);
-
-				centerAndi = setInterval(function() {
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-					var R = 6371;
-					var x3 = safezoneLatAndi - markerLatAndi;
-					var dLatc = x3.toRad();
-					var x4 = safezoneLngAndi - markerLngAndi;
-					var dLonc = x4.toRad();
-					var m =
-						Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
-						Math.cos(markerLatAndi.toRad()) *
-							Math.cos(safezoneLatAndi.toRad()) *
-							Math.sin(dLonc / 2) *
-							Math.sin(dLonc / 2);
-					var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
-					var o = R * n;
-					var centerConversion = o * 1000; // ke meter
-					var centerResult = centerConversion.toFixed(2);
-
-					db.ref("maps/Andi").update({
-						center: centerResult
-					});
-
-					if (centerResult <= safezoneRadiusAndi) {
-						db.ref("maps/Andi").update({
-							position: "Inside Safezone"
-						});
-					} else {
-						db.ref("maps/Andi").update({
-							position: "Outside Safezone"
-						});
-					}
-				}, 1000);
-			}
-
-			function stopMarkerAndi() {
-				clearInterval(startAndi);
-				clearInterval(centerAndi);
-			}
-
-			function resetMarkerAndi() {
-				db.ref("maps/Andi").update({
-					markerLat: -6.973119,
-					markerLng: 107.633219,
-					safezoneLat: -6.972954,
-					safezoneLng: 107.633066,
-					distance: 0
-				});
-			}
-
-			function sendInsideNotificationAndi(token) {
-				const notif = {
-					notification: {
-						title: "Andi berada dalam Safezone!",
-						body:
-							"Saat ini Andi dalam safezone, tetap pantau aktifitasnya!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-
-			function sendOutsideNotificationAndi(token) {
-				const notif = {
-					notification: {
-						title: "Berbahaya!",
-						body:
-							"Saat ini Andi berada di luar safezone, segera pantau dia!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-		</script>
-
-		<!-- Paijo -->
-
-		<script>
-			var startPaijo, centerPaijo;
-			var markerLatPaijo,
-				markerLngPaijo,
-				distancePaijo,
-				safezoneLatPaijo,
-				safezoneLngPaijo,
-				safezoneRadiusPaijo;
-
-			db.ref().on("value", function(val) {
-				safezoneLatPaijo = val.child("maps/Paijo/safezoneLat").val();
-				safezoneLngPaijo = val.child("maps/Paijo/safezoneLng").val();
-				safezoneRadiusPaijo = val
-					.child("maps/Paijo/safezoneRadius")
-					.val();
-				markerLatPaijo = val.child("maps/Paijo/markerLat").val();
-				markerLngPaijo = val.child("maps/Paijo/markerLng").val();
-				distancePaijo = val.child("maps/Paijo/distance").val();
-			});
-
-			function moveMarkerPaijo() {
-				startPaijo = setInterval(function() {
-					db.ref("maps/Paijo").update({
-						markerLat: markerLatPaijo + 0.000008,
-						markerLng: markerLngPaijo + 0.000008
-					});
-
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-
-					var lat1 = -6.970701;
-					var lon1 = 107.633597;
-
-					var R = 6371;
-					var x1 = markerLatPaijo - lat1;
-					var dLat = x1.toRad();
-					var x2 = markerLngPaijo - lon1;
-					var dLon = x2.toRad();
-					var a =
-						Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-						Math.cos(lat1.toRad()) *
-							Math.cos(markerLatPaijo.toRad()) *
-							Math.sin(dLon / 2) *
-							Math.sin(dLon / 2);
-					var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-					var d = R * c;
-					var conversion = d * 1000;
-					var result = conversion.toFixed(2);
-
-					db.ref("maps/Paijo").update({
-						distance: result
-					});
-				}, 1000);
-
-				centerPaijo = setInterval(function() {
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-					var R = 6371;
-					var x3 = safezoneLatPaijo - markerLatPaijo;
-					var dLatc = x3.toRad();
-					var x4 = safezoneLngPaijo - markerLngPaijo;
-					var dLonc = x4.toRad();
-					var m =
-						Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
-						Math.cos(markerLatPaijo.toRad()) *
-							Math.cos(safezoneLatPaijo.toRad()) *
-							Math.sin(dLonc / 2) *
-							Math.sin(dLonc / 2);
-					var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
-					var o = R * n;
-					var centerConversion = o * 1000;
-					var centerResult = centerConversion.toFixed(2);
-
-					db.ref("maps/Paijo").update({
-						center: centerResult
-					});
-
-					if (centerResult <= safezoneRadiusPaijo) {
-						db.ref("maps/Paijo").update({
-							position: "Inside Safezone"
-						});
-					} else {
-						db.ref("maps/Paijo").update({
-							position: "Outside Safezone"
-						});
-					}
-				}, 1000);
-			}
-
-			function stopMarkerPaijo() {
-				clearInterval(startPaijo);
-				clearInterval(centerPaijo);
-			}
-
-			function resetMarkerPaijo() {
-				db.ref("maps/Paijo").update({
-					markerLat: -6.970701,
-					markerLng: 107.633597,
-					safezoneLat: -6.970126,
-					safezoneLng: 107.633898,
-					distance: 0
-				});
-			}
-
-			function sendInsideNotificationPaijo(token) {
-				const notif = {
-					notification: {
-						title: "Paijo berada dalam Safezone!",
-						body:
-							"Saat ini Paijo dalam safezone, tetap pantau aktifitasnya!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-
-			function sendOutsideNotificationPaijo(token) {
-				const notif = {
-					notification: {
-						title: "Berbahaya!",
-						body:
-							"Saat ini Paijo berada di luar safezone, segera pantau dia!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-		</script>
-
-		<!-- Tukimin -->
-
-		<script>
-			var startTukimin, centerTukimin;
-			var markerLatTukimin,
-				markerLngTukimin,
-				distanceTukimin,
-				safezoneLatTukimin,
-				safezoneLngTukimin,
-				safezoneRadiusTukimin;
-
-			db.ref().on("value", function(val) {
-				safezoneLatTukimin = val
-					.child("maps/Tukimin/safezoneLat")
-					.val();
-				safezoneLngTukimin = val
-					.child("maps/Tukimin/safezoneLng")
-					.val();
-				safezoneRadiusTukimin = val
-					.child("maps/Tukimin/safezoneRadius")
-					.val();
-				markerLatTukimin = val.child("maps/Tukimin/markerLat").val();
-				markerLngTukimin = val.child("maps/Tukimin/markerLng").val();
-				distanceTukimin = val.child("maps/Tukimin/distance").val();
-			});
-
-			function moveMarkerTukimin() {
-				startTukimin = setInterval(function() {
-					db.ref("maps/Tukimin").update({
-						markerLat: markerLatTukimin - 0.000008,
-						markerLng: markerLngTukimin + 0.000008
-					});
-
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-
-					var lat1 = -6.970111;
-					var lon1 = 107.63086;
-
-					var R = 6371;
-					var x1 = markerLatTukimin - lat1;
-					var dLat = x1.toRad();
-					var x2 = markerLngTukimin - lon1;
-					var dLon = x2.toRad();
-					var a =
-						Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-						Math.cos(lat1.toRad()) *
-							Math.cos(markerLatTukimin.toRad()) *
-							Math.sin(dLon / 2) *
-							Math.sin(dLon / 2);
-					var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-					var d = R * c;
-					var conversion = d * 1000;
-					var result = conversion.toFixed(2);
-
-					db.ref("maps/Tukimin").update({
-						distance: result
-					});
-				}, 1000);
-
-				centerTukimin = setInterval(function() {
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-					var R = 6371;
-					var x3 = safezoneLatTukimin - markerLatTukimin;
-					var dLatc = x3.toRad();
-					var x4 = safezoneLngTukimin - markerLngTukimin;
-					var dLonc = x4.toRad();
-					var m =
-						Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
-						Math.cos(markerLatTukimin.toRad()) *
-							Math.cos(safezoneLatTukimin.toRad()) *
-							Math.sin(dLonc / 2) *
-							Math.sin(dLonc / 2);
-					var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
-					var o = R * n;
-					var centerConversion = o * 1000;
-					var centerResult = centerConversion.toFixed(2);
-
-					db.ref("maps/Tukimin").update({
-						center: centerResult
-					});
-
-					if (centerResult <= safezoneRadiusTukimin) {
-						db.ref("maps/Tukimin").update({
-							position: "Inside Safezone"
-						});
-					} else {
-						db.ref("maps/Tukimin").update({
-							position: "Outside Safezone"
-						});
-					}
-				}, 1000);
-			}
-
-			function stopMarkerTukimin() {
-				clearInterval(startTukimin);
-				clearInterval(centerTukimin);
-			}
-
-			function resetMarkerTukimin() {
-				db.ref("maps/Tukimin").update({
-					markerLat: -6.970111,
-					markerLng: 107.63086,
-					safezoneLat: -6.970643,
-					safezoneLng: 107.631364,
-					distance: 0
-				});
-			}
-
-			function sendInsideNotificationTukimin(token) {
-				const notif = {
-					notification: {
-						title: "Tukimin berada dalam Safezone!",
-						body:
-							"Saat ini Tukimin dalam safezone, tetap pantau aktifitasnya!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-
-			function sendOutsideNotificationTukimin(token) {
-				const notif = {
-					notification: {
-						title: "Berbahaya!",
-						body:
-							"Saat ini Tukimin berada di luar safezone, segera pantau dia!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-		</script>
-
-		<!-- Testing -->
-
-		<script>
-			var centerTest, distanceTest;
-			var markerLatTest,
-				markerLngTest,
-				distanceTest,
-				safezoneLatTest,
-				safezoneLngTest,
-				safezoneRadiusTest,
-				latTest,
-				lngTest;
-
-			db.ref().on("value", function(val) {
-				safezoneLatTest = val.child("maps/TestingRaps/safezoneLat").val();
-				safezoneLngTest = val.child("maps/TestingRaps/safezoneLng").val();
-				safezoneRadiusTest = val
-					.child("maps/TestingRaps/safezoneRadius")
-					.val();
-				markerLatTest = val.child("maps/Testing/latitude").val();
-				markerLngTest = val.child("maps/Testing/longitude").val();
-				distanceTest = val.child("maps/TestingRaps/distance").val();
-				latTest = val.child("maps/TestingRaps/latDistanceStart").val();
-				lngTest = val.child("maps/TestingRaps/lngDistanceStart").val();
-			});
-
-			function testGeolocation() {
-				distanceTest = setInterval(function() {
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-
-					var lat1 = latTest;
-					var lon1 = lngTest;
-
-					var R = 6371; // jari-jari bumi
-					var x1 = markerLatTest - lat1;
-					var dLat = x1.toRad();
-					var x2 = markerLngTest - lon1;
-					var dLon = x2.toRad();
-					var a =
-						Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-						Math.cos(lat1.toRad()) *
-							Math.cos(markerLatTest.toRad()) *
-							Math.sin(dLon / 2) *
-							Math.sin(dLon / 2);
-					var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-					var d = R * c;
-					var conversion = d * 1000; // ke meter
-					var result = conversion.toFixed(2);
-
-					db.ref("maps/TestingRaps").update({
-						distance: result
-					});
-				}, 1000);
-
-				centerTest = setInterval(function() {
-					Number.prototype.toRad = function() {
-						return (this * Math.PI) / 180;
-					};
-					var R = 6371;
-					var x3 = safezoneLatTest - markerLatTest;
-					var dLatc = x3.toRad();
-					var x4 = safezoneLngTest - markerLngTest;
-					var dLonc = x4.toRad();
-					var m =
-						Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
-						Math.cos(markerLatTest.toRad()) *
-							Math.cos(safezoneLatTest.toRad()) *
-							Math.sin(dLonc / 2) *
-							Math.sin(dLonc / 2);
-					var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
-					var o = R * n;
-					var centerConversion = o * 1000;
-					var centerResult = centerConversion.toFixed(2);
-
-					db.ref("maps/TestingRaps").update({
-						center: centerResult
-					});
-
-					if (centerResult <= safezoneRadiusTest) {
-						db.ref("maps/TestingRaps").update({
-							position: "Inside Safezone"
-						});
-					} else {
-						db.ref("maps/TestingRaps").update({
-							position: "Outside Safezone"
-						});
-					}
-				}, 1000);
-			}
-
-			function stopGeolocation() {
-				clearInterval(centerTest);
-				clearInterval(distanceTest);
-			}
-
-			function sendInsideNotificationTest(token) {
-				const notif = {
-					notification: {
-						title: "Anda berada dalam Safezone!",
-						body: "Saat ini Anda dalam safezone, semua aman!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-
-			function sendOutsideNotificationTest(token) {
-				const notif = {
-					notification: {
-						title: "Berbahaya!",
-						body:
-							"Saat ini Anda berada di luar safezone, hati-hati!",
-						sound: "default",
-						android_channel_id: "petaFadhil",
-						high_priority: "high",
-						show_in_foreground: true
-					},
-					to: token,
-					priority: "high"
-				};
-
-				fetch("https://fcm.googleapis.com/fcm/send", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization:
-							"key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr"
-					},
-					body: JSON.stringify(notif)
-				})
-					.then(response => console.log("Success!", response.json()))
-					.catch(error => console.log("errornnya : ", error));
-			}
-		</script>
-	</body>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAUTHsQv9RvC6oX2WvENKTPwy_dpsdwyVQ',
+        authDomain: 'project-similo.firebaseapp.com',
+        databaseURL: 'https://project-similo.firebaseio.com',
+        projectId: 'project-similo',
+        storageBucket: 'project-similo.appspot.com',
+        messagingSenderId: '1075312514568',
+        appId: '1:1075312514568:web:0aafdd24d0ca54b2',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Ambil data dari firebase -->
+    <script>
+      var db = firebase.database();
+
+      var fcmToken, statusAndi, statusPaijo, statusTukimin;
+
+      db.ref().on('value', function(status) {
+        fcmToken = status.child('maps/fcmToken').val();
+
+        statusAndi = status.child('maps/Andi/status').val();
+        statusPaijo = status.child('maps/Paijo/status').val();
+        statusTukimin = status.child('maps/Tukimin/status').val();
+
+        document.getElementById('status-andi').innerHTML = statusAndi;
+        document.getElementById('status-paijo').innerHTML = statusPaijo;
+        document.getElementById('status-tukimin').innerHTML = statusTukimin;
+      });
+
+      db.ref('/maps/Andi').on('child_changed', function(data) {
+        if (data.key === 'position') {
+          console.log(data.val());
+          if (data.val() === 'Inside Safezone') {
+            sendInsideNotificationAndi(fcmToken);
+          } else if (data.val() === 'Outside Safezone') {
+            sendOutsideNotificationAndi(fcmToken);
+          }
+        }
+      });
+
+      db.ref('/maps/Paijo').on('child_changed', function(data) {
+        if (data.key === 'position') {
+          console.log(data.val());
+          if (data.val() === 'Inside Safezone') {
+            sendInsideNotificationPaijo(fcmToken);
+          } else if (data.val() === 'Outside Safezone') {
+            sendOutsideNotificationPaijo(fcmToken);
+          }
+        }
+      });
+
+      db.ref('/maps/Tukimin').on('child_changed', function(data) {
+        if (data.key === 'position') {
+          console.log(data.val());
+          if (data.val() === 'Inside Safezone') {
+            sendInsideNotificationTukimin(fcmToken);
+          } else if (data.val() === 'Outside Safezone') {
+            sendOutsideNotificationTukimin(fcmToken);
+          }
+        }
+      });
+      db.ref('/maps/TestingRaps').on('child_changed', function(data) {
+        if (data.key === 'position') {
+          console.log(data.val());
+          if (data.val() === 'Inside Safezone') {
+            sendInsideNotificationTest(fcmToken);
+          } else if (data.val() === 'Outside Safezone') {
+            sendOutsideNotificationTest(fcmToken);
+          }
+        }
+      });
+    </script>
+
+    <!-- Andi -->
+
+    <script>
+      var startAndi, centerAndi;
+      var markerLatAndi,
+        markerLngAndi,
+        distanceAndi,
+        safezoneLatAndi,
+        safezoneLngAndi,
+        safezoneRadiusAndi;
+
+      db.ref().on('value', function(val) {
+        safezoneLatAndi = val.child('maps/Andi/safezoneLat').val();
+        safezoneLngAndi = val.child('maps/Andi/safezoneLng').val();
+        safezoneRadiusAndi = val.child('maps/Andi/safezoneRadius').val();
+        markerLatAndi = val.child('maps/Andi/markerLat').val();
+        markerLngAndi = val.child('maps/Andi/markerLng').val();
+        distanceAndi = val.child('maps/Andi/distance').val();
+      });
+
+      function moveMarkerAndi() {
+        startAndi = setInterval(function() {
+          db.ref('maps/Andi').update({
+            markerLat: markerLatAndi + 0.000008, //0.000005 = 0.8 meter berpindah , 0.000006 = 1 meter
+            markerLng: markerLngAndi - 0.000008,
+          });
+
+          // Haversine Formula
+          // https://www.movable-type.co.uk/scripts/latlong.html
+
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+
+          var lat1 = -6.973119;
+          var lon1 = 107.633219;
+
+          var R = 6371; // jari-jari bumi
+          var x1 = markerLatAndi - lat1;
+          var dLat = x1.toRad();
+          var x2 = markerLngAndi - lon1;
+          var dLon = x2.toRad();
+          var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) *
+              Math.cos(markerLatAndi.toRad()) *
+              Math.sin(dLon / 2) *
+              Math.sin(dLon / 2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          var d = R * c;
+          var conversion = d * 1000; // ke meter
+          var result = conversion.toFixed(2);
+
+          db.ref('maps/Andi').update({
+            distance: result,
+          });
+        }, 1000);
+
+        centerAndi = setInterval(function() {
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+          var R = 6371;
+          var x3 = safezoneLatAndi - markerLatAndi;
+          var dLatc = x3.toRad();
+          var x4 = safezoneLngAndi - markerLngAndi;
+          var dLonc = x4.toRad();
+          var m =
+            Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
+            Math.cos(markerLatAndi.toRad()) *
+              Math.cos(safezoneLatAndi.toRad()) *
+              Math.sin(dLonc / 2) *
+              Math.sin(dLonc / 2);
+          var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
+          var o = R * n;
+          var centerConversion = o * 1000; // ke meter
+          var centerResult = centerConversion.toFixed(2);
+
+          db.ref('maps/Andi').update({
+            center: centerResult,
+          });
+
+          if (centerResult <= safezoneRadiusAndi) {
+            db.ref('maps/Andi').update({
+              position: 'Inside Safezone',
+            });
+          } else {
+            db.ref('maps/Andi').update({
+              position: 'Outside Safezone',
+            });
+          }
+        }, 1000);
+      }
+
+      function stopMarkerAndi() {
+        clearInterval(startAndi);
+        clearInterval(centerAndi);
+      }
+
+      function resetMarkerAndi() {
+        db.ref('maps/Andi').update({
+          markerLat: -6.973119,
+          markerLng: 107.633219,
+          safezoneLat: -6.972954,
+          safezoneLng: 107.633066,
+          distance: 0,
+        });
+      }
+
+      function sendInsideNotificationAndi(token) {
+        const notif = {
+          notification: {
+            title: 'Andi berada dalam Safezone!',
+            body: 'Saat ini Andi dalam safezone, tetap pantau aktifitasnya!',
+            sound: 'default',
+            android_channel_id: 'petaFadhil',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+
+      function sendOutsideNotificationAndi(token) {
+        const notif = {
+          notification: {
+            title: 'Berbahaya!',
+            body: 'Saat ini Andi berada di luar safezone, segera pantau dia!',
+            sound: 'default',
+            android_channel_id: 'petaFadhil',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+    </script>
+
+    <!-- Paijo -->
+
+    <script>
+      var startPaijo, centerPaijo;
+      var markerLatPaijo,
+        markerLngPaijo,
+        distancePaijo,
+        safezoneLatPaijo,
+        safezoneLngPaijo,
+        safezoneRadiusPaijo;
+
+      db.ref().on('value', function(val) {
+        safezoneLatPaijo = val.child('maps/Paijo/safezoneLat').val();
+        safezoneLngPaijo = val.child('maps/Paijo/safezoneLng').val();
+        safezoneRadiusPaijo = val.child('maps/Paijo/safezoneRadius').val();
+        markerLatPaijo = val.child('maps/Paijo/markerLat').val();
+        markerLngPaijo = val.child('maps/Paijo/markerLng').val();
+        distancePaijo = val.child('maps/Paijo/distance').val();
+      });
+
+      function moveMarkerPaijo() {
+        startPaijo = setInterval(function() {
+          db.ref('maps/Paijo').update({
+            markerLat: markerLatPaijo + 0.000008,
+            markerLng: markerLngPaijo + 0.000008,
+          });
+
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+
+          var lat1 = -6.970701;
+          var lon1 = 107.633597;
+
+          var R = 6371;
+          var x1 = markerLatPaijo - lat1;
+          var dLat = x1.toRad();
+          var x2 = markerLngPaijo - lon1;
+          var dLon = x2.toRad();
+          var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) *
+              Math.cos(markerLatPaijo.toRad()) *
+              Math.sin(dLon / 2) *
+              Math.sin(dLon / 2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          var d = R * c;
+          var conversion = d * 1000;
+          var result = conversion.toFixed(2);
+
+          db.ref('maps/Paijo').update({
+            distance: result,
+          });
+        }, 1000);
+
+        centerPaijo = setInterval(function() {
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+          var R = 6371;
+          var x3 = safezoneLatPaijo - markerLatPaijo;
+          var dLatc = x3.toRad();
+          var x4 = safezoneLngPaijo - markerLngPaijo;
+          var dLonc = x4.toRad();
+          var m =
+            Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
+            Math.cos(markerLatPaijo.toRad()) *
+              Math.cos(safezoneLatPaijo.toRad()) *
+              Math.sin(dLonc / 2) *
+              Math.sin(dLonc / 2);
+          var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
+          var o = R * n;
+          var centerConversion = o * 1000;
+          var centerResult = centerConversion.toFixed(2);
+
+          db.ref('maps/Paijo').update({
+            center: centerResult,
+          });
+
+          if (centerResult <= safezoneRadiusPaijo) {
+            db.ref('maps/Paijo').update({
+              position: 'Inside Safezone',
+            });
+          } else {
+            db.ref('maps/Paijo').update({
+              position: 'Outside Safezone',
+            });
+          }
+        }, 1000);
+      }
+
+      function stopMarkerPaijo() {
+        clearInterval(startPaijo);
+        clearInterval(centerPaijo);
+      }
+
+      function resetMarkerPaijo() {
+        db.ref('maps/Paijo').update({
+          markerLat: -6.970701,
+          markerLng: 107.633597,
+          safezoneLat: -6.970126,
+          safezoneLng: 107.633898,
+          distance: 0,
+        });
+      }
+
+      function sendInsideNotificationPaijo(token) {
+        const notif = {
+          notification: {
+            title: 'Paijo berada dalam Safezone!',
+            body: 'Saat ini Paijo dalam safezone, tetap pantau aktifitasnya!',
+            sound: 'default',
+            android_channel_id: 'petaFadhil',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+
+      function sendOutsideNotificationPaijo(token) {
+        const notif = {
+          notification: {
+            title: 'Berbahaya!',
+            body: 'Saat ini Paijo berada di luar safezone, segera pantau dia!',
+            sound: 'default',
+            android_channel_id: 'petaFadhil',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+    </script>
+
+    <!-- Tukimin -->
+
+    <script>
+      var startTukimin, centerTukimin;
+      var markerLatTukimin,
+        markerLngTukimin,
+        distanceTukimin,
+        safezoneLatTukimin,
+        safezoneLngTukimin,
+        safezoneRadiusTukimin;
+
+      db.ref().on('value', function(val) {
+        safezoneLatTukimin = val.child('maps/Tukimin/safezoneLat').val();
+        safezoneLngTukimin = val.child('maps/Tukimin/safezoneLng').val();
+        safezoneRadiusTukimin = val.child('maps/Tukimin/safezoneRadius').val();
+        markerLatTukimin = val.child('maps/Tukimin/markerLat').val();
+        markerLngTukimin = val.child('maps/Tukimin/markerLng').val();
+        distanceTukimin = val.child('maps/Tukimin/distance').val();
+      });
+
+      function moveMarkerTukimin() {
+        startTukimin = setInterval(function() {
+          db.ref('maps/Tukimin').update({
+            markerLat: markerLatTukimin - 0.000008,
+            markerLng: markerLngTukimin + 0.000008,
+          });
+
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+
+          var lat1 = -6.970111;
+          var lon1 = 107.63086;
+
+          var R = 6371;
+          var x1 = markerLatTukimin - lat1;
+          var dLat = x1.toRad();
+          var x2 = markerLngTukimin - lon1;
+          var dLon = x2.toRad();
+          var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) *
+              Math.cos(markerLatTukimin.toRad()) *
+              Math.sin(dLon / 2) *
+              Math.sin(dLon / 2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          var d = R * c;
+          var conversion = d * 1000;
+          var result = conversion.toFixed(2);
+
+          db.ref('maps/Tukimin').update({
+            distance: result,
+          });
+        }, 1000);
+
+        centerTukimin = setInterval(function() {
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+          var R = 6371;
+          var x3 = safezoneLatTukimin - markerLatTukimin;
+          var dLatc = x3.toRad();
+          var x4 = safezoneLngTukimin - markerLngTukimin;
+          var dLonc = x4.toRad();
+          var m =
+            Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
+            Math.cos(markerLatTukimin.toRad()) *
+              Math.cos(safezoneLatTukimin.toRad()) *
+              Math.sin(dLonc / 2) *
+              Math.sin(dLonc / 2);
+          var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
+          var o = R * n;
+          var centerConversion = o * 1000;
+          var centerResult = centerConversion.toFixed(2);
+
+          db.ref('maps/Tukimin').update({
+            center: centerResult,
+          });
+
+          if (centerResult <= safezoneRadiusTukimin) {
+            db.ref('maps/Tukimin').update({
+              position: 'Inside Safezone',
+            });
+          } else {
+            db.ref('maps/Tukimin').update({
+              position: 'Outside Safezone',
+            });
+          }
+        }, 1000);
+      }
+
+      function stopMarkerTukimin() {
+        clearInterval(startTukimin);
+        clearInterval(centerTukimin);
+      }
+
+      function resetMarkerTukimin() {
+        db.ref('maps/Tukimin').update({
+          markerLat: -6.970111,
+          markerLng: 107.63086,
+          safezoneLat: -6.970643,
+          safezoneLng: 107.631364,
+          distance: 0,
+        });
+      }
+
+      function sendInsideNotificationTukimin(token) {
+        const notif = {
+          notification: {
+            title: 'Tukimin berada dalam Safezone!',
+            body: 'Saat ini Tukimin dalam safezone, tetap pantau aktifitasnya!',
+            sound: 'default',
+            android_channel_id: 'petaFadhil',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+
+      function sendOutsideNotificationTukimin(token) {
+        const notif = {
+          notification: {
+            title: 'Berbahaya!',
+            body: 'Saat ini Tukimin berada di luar safezone, segera pantau dia!',
+            sound: 'default',
+            android_channel_id: 'petaFadhil',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+    </script>
+
+    <!-- Testing -->
+
+    <script>
+      var centerTest, distanceTest;
+      var markerLatTest,
+        markerLngTest,
+        distanceTest,
+        safezoneLatTest,
+        safezoneLngTest,
+        safezoneRadiusTest,
+        latTest,
+        lngTest;
+
+      db.ref().on('value', function(val) {
+        safezoneLatTest = val.child('maps/TestingRaps/safezoneLat').val();
+        safezoneLngTest = val.child('maps/TestingRaps/safezoneLng').val();
+        safezoneRadiusTest = val.child('maps/TestingRaps/safezoneRadius').val();
+        markerLatTest = val.child('maps/Testing/latitude').val();
+        markerLngTest = val.child('maps/Testing/longitude').val();
+        distanceTest = val.child('maps/TestingRaps/distance').val();
+        latTest = val.child('maps/TestingRaps/latDistanceStart').val();
+        lngTest = val.child('maps/TestingRaps/lngDistanceStart').val();
+      });
+
+      function testGeolocation() {
+        distanceTest = setInterval(function() {
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+
+          var markerLatFloat = parseFloat(markerLatTest);
+          var markerLngFloat = parseFloat(markerLngTest);
+
+          db.ref('maps/TestingRaps').update({
+            markerLatTest: markerLatFloat,
+            markerLngTest: markerLngFloat,
+          });
+
+          var lat1 = latTest;
+          var lon1 = lngTest;
+
+          var R = 6371; // jari-jari bumi
+          var x1 = markerLatFloat - lat1;
+          var dLat = x1.toRad();
+          var x2 = markerLngFloat - lon1;
+          var dLon = x2.toRad();
+          var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1.toRad()) *
+              Math.cos(markerLatFloat.toRad()) *
+              Math.sin(dLon / 2) *
+              Math.sin(dLon / 2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          var d = R * c;
+          var conversion = d * 1000; // ke meter
+          var result = conversion.toFixed(2);
+
+          db.ref('maps/TestingRaps').update({
+            distance: result,
+          });
+        }, 1000);
+
+        centerTest = setInterval(function() {
+          Number.prototype.toRad = function() {
+            return (this * Math.PI) / 180;
+          };
+
+          var markerLatFloat = parseFloat(markerLatTest);
+          var markerLngFloat = parseFloat(markerLngTest);
+          var R = 6371;
+          var x3 = safezoneLatTest - markerLatTest;
+          var dLatc = x3.toRad();
+          var x4 = safezoneLngTest - markerLngTest;
+          var dLonc = x4.toRad();
+          var m =
+            Math.sin(dLatc / 2) * Math.sin(dLatc / 2) +
+            Math.cos(markerLatTest.toRad()) *
+              Math.cos(safezoneLatTest.toRad()) *
+              Math.sin(dLonc / 2) *
+              Math.sin(dLonc / 2);
+          var n = 2 * Math.atan2(Math.sqrt(m), Math.sqrt(1 - m));
+          var o = R * n;
+          var centerConversion = o * 1000;
+          var centerResult = centerConversion.toFixed(2);
+
+          db.ref('maps/TestingRaps').update({
+            center: centerResult,
+          });
+
+          if (centerResult <= safezoneRadiusTest) {
+            db.ref('maps/TestingRaps').update({
+              position: 'Inside Safezone',
+            });
+          } else {
+            db.ref('maps/TestingRaps').update({
+              position: 'Outside Safezone',
+            });
+          }
+        }, 1000);
+      }
+
+      function stopGeolocation() {
+        clearInterval(centerTest);
+        clearInterval(distanceTest);
+      }
+
+      function sendInsideNotificationTest(token) {
+        const notif = {
+          notification: {
+            title: 'Berada dalam Zona Aman',
+            body: 'Saat ini Alat berada di dalam Zona Aman',
+            sound: 'default',
+            android_channel_id: 'Find My Children',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+
+      function sendOutsideNotificationTest(token) {
+        const notif = {
+          notification: {
+            title: 'Berbahaya!',
+            body: 'Saat ini Alat berada di luar Zona Aman',
+            sound: 'default',
+            android_channel_id: 'Find My Children',
+            high_priority: 'high',
+            show_in_foreground: true,
+          },
+          to: token,
+          priority: 'high',
+        };
+
+        fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'key=AAAA-l2e1gg:APA91bEvLVyCsnc-9NZNlwbUEpMPKAHOUYDbZC0Nd_b-f3x8WXaC_5CWCM-OZuIXzn5PQCLmeej8VqC7NjGgQI5DjiwelB5kXQeStNcPQOgWAoawpujoKNoPEB0ztTQOe9OTaDVd3jIr',
+          },
+          body: JSON.stringify(notif),
+        })
+          .then((response) => console.log('Success!', response.json()))
+          .catch((error) => console.log('errornnya : ', error));
+      }
+    </script>
+  </body>
 </html>
